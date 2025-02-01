@@ -1,0 +1,776 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&display=swap');
+
+        /* Botón volver arriba */
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background-color: var(--secondary-color);
+            color: var(--text-light);
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+            transition: all 0.3s ease;
+            opacity: 0;
+            visibility: hidden;
+            z-index: 1000;
+        }
+
+        .back-to-top:hover {
+            background-color: #d35400;
+            transform: translateY(-3px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+        }
+
+        .back-to-top.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        :root {
+            --primary-color: #2c3e50;      /* Azul oscuro */
+            --secondary-color: #e67e22;    /* Naranja */
+            --accent-color: #3498db;       /* Azul claro */
+            --text-light: #ffffff;
+            --text-dark: #333333;
+            --text-medium: #666666;
+            --background-light: #f5f6fa;
+            --background-dark: #2c3e50;    /* Mismo que primary-color */
+            --nav-text: #2c3e50;          /* Mismo que primary-color */
+            --nav-text-hover: #e67e22;    /* Mismo que secondary-color */
+            --footer-text: #ecf0f1;
+            --transition: all 0.3s ease;
+            --font-heading: 'Helvetica Neue', Arial, sans-serif;
+            --font-body: 'Arial', sans-serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--font-body);
+            line-height: 1.6;
+            color: var(--text-dark);
+            overflow-x: hidden;
+        }
+
+        /* Header y Navigation */
+        .hero {
+            position: relative;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        .hero-video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+        }
+
+
+        .hero-video video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+            transform: scale(1.02);
+        }
+
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.7));
+            z-index: 2;
+        }
+
+        .main-nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            background: #E2E9EA; /* Cambiado de rgba(255, 255, 255, 0.95) a #EBEBEC */
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            padding: 0.25rem 0; /* Reducir el tamaño de la barra de navegación */
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 2rem;
+        }
+
+            .nav-social-icons {
+        display: flex;
+        position: absolute; /* Asegura que los íconos estén en la esquina */
+        right: 0.8rem; /* Ajusta la distancia desde el borde derecho */
+        right: 0px
+        top: 0rem; /* Ajusta la distancia desde el borde superior */
+        top: 0px;
+        
+    }
+    
+       .nav-social-icons a {
+        padding: 0.5rem; /* Aumentar el padding para hacer más visible */
+    }
+
+        .nav-hidden {
+            transform: translateY(-100%); /* Ocultar completamente la barra de navegación */
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            height: 100px; /* Ajuste del tamaño del logo y video */
+        }
+
+        .logo, .logo-video-container {
+            height: 100%; /* Reducir los márgenes sin alterar el tamaño del logo y video */
+            width: auto;
+            position: relative;
+        }
+
+        .logo img, .logo-video-container video {
+            height: 100%;
+            width: 100%;
+            object-fit: contain;
+        }
+
+        .logo-video-container {
+            display: none;
+        }
+
+        .logo-video-container.active {
+            display: block;
+        }
+
+        .logo.hidden {
+            display: none;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            flex-grow: 1;
+            justify-content: flex-end;
+        }
+
+        .main-nav .nav-links .nav-social-icons {
+            display: flex;
+            gap: 0rem;
+            margin-left: 0rem;
+        }
+
+        .main-nav .nav-links .nav-social-icons a {
+            color: var(--nav-text);
+            font-size: 24px !important;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0rem;
+        }
+
+        .main-nav .nav-links .nav-social-icons a i {
+            font-size: 25px !important;
+        }
+
+        .main-nav .nav-links .nav-social-icons a:hover {
+            color: var(--secondary-color);
+            transform: translateY(-2px);
+        }
+
+        .nav-links a:not(.logo) {
+            font-family: var(--font-body);
+            color: var(--nav-text);
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            margin: 0 0.5rem;
+            font-weight: 500;
+            transition: var(--transition);
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+        }
+
+        .nav-links a:not(.logo):hover {
+            color: var(--nav-text-hover);
+            transform: translateY(-2px);
+        }
+
+        /* Hamburger Menu Styles */
+        .hamburger {
+            display: none;
+            cursor: pointer;
+            background: none;
+            border: none;
+            padding: 0rem;
+            z-index: 1001;
+            margin-left: auto;
+            position: relative;
+            top: 20px; /* Ajusta este valor para mover el botón hamburguesa más abajo */
+
+        }
+
+        .hamburger-line {
+            display: block;
+            width: 25px;
+            height: 3px;
+            margin: 5px auto;
+            background-color: var(--nav-text);
+            transition: var(--transition);
+        }
+
+        /* Hero Content */
+        .hero-content {
+            position: relative;
+            z-index: 3;
+            color: var(--text-light);
+            text-align: center;
+            padding-top: 40vh;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .hero-content h1 {
+            font-family: var(--font-heading);
+            font-size: 3.8rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+            letter-spacing: 1px;
+        }
+
+        .hero-content p {
+            font-family: var(--font-body);
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+            letter-spacing: 0.5px;
+            font-weight: 400;
+        }
+        /* Secciones Generales */
+        section {
+            padding: 5rem 0;
+        }
+
+        .section-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        h2 {
+            font-family: var(--font-heading);
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 3rem;
+            color: var(--text-dark);
+            position: relative;
+        }
+
+        h2::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 4px;
+            background: var(--secondary-color);
+            margin: 1rem auto;
+        }
+
+        /* Servicios y Cards */
+        .servicios-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin: 0 auto;
+        }
+
+        .servicio-card {
+            background: var(--background-light);
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: var(--transition);
+            text-align: center;
+        }
+
+        .servicio-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .servicio-card i {
+            font-size: 2.5rem;
+            color: var(--secondary-color);
+            margin-bottom: 1rem;
+        }
+
+        .servicio-card h3 {
+            color: var(--primary-color);
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+
+        .servicio-card p {
+            color: var(--text-medium);
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        /* Sección Por Qué Elegirnos */
+        .porque-elegirnos {
+            background: var(--background-dark);
+            padding: 5rem 0;
+        }
+
+        .porque-elegirnos h2 {
+            color: var(--text-light);
+        }
+
+        .porque-elegirnos .servicio-card {
+            background: var(--background-light);
+            color: var(--text-dark);
+        }
+
+        /* Sección CTA */
+        .cta {
+            background: var(--background-dark);
+            color: var(--text-light);
+            padding: 4rem 0;
+            text-align: center;
+        }
+
+        .cta h2,
+        .cta p {
+            color: var(--text-light);
+            margin-bottom: 2rem;
+        }
+
+        /* Botones */
+        .btn {
+            font-family: var(--font-body);
+            display: inline-block;
+            padding: 1rem 2rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            font-size: 0.9rem;
+            cursor: pointer;
+            border: none;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .btn::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(255, 255, 255, 0.2);
+            transform: scaleX(0);
+            transform-origin: right;
+            transition: transform 0.3s ease-out;
+            z-index: -1;
+        }
+
+        .btn:hover::after {
+            transform: scaleX(1);
+            transform-origin: left;
+        }
+
+        .btn-primary {
+            background-color: var(--secondary-color);
+            color: var(--text-light);
+        }
+
+        .btn-primary:hover {
+            background-color: #d62828;
+            transform: translateY(-5px);
+            box-shadow: 0 8px 15px rgba(230, 57, 70, 0.3);
+        }
+
+        .btn-primary:active {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 10px rgba(230, 57, 70, 0.2);
+        }
+
+        /* Asegurarnos de que los botones en el hero y CTA tengan el mismo comportamiento */
+        .hero-content .btn-primary,
+        .cta .btn-primary {
+            background-color: var(--secondary-color);
+            color: var(--text-light);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .hero-content .btn-primary:hover,
+        .cta .btn-primary:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 15px rgba(230, 57, 70, 0.3);
+        }
+
+        .hero-content .btn-primary:active,
+        .cta .btn-primary:active {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 10px rgba(230, 57, 70, 0.2);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--background-dark);
+            color: var(--footer-text);
+            padding: 4rem 0 2rem;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        footer h3 {
+            font-family: var(--font-heading);
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+        }
+
+        footer p {
+            font-family: var(--font-body);
+            font-size: 0.9rem;
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .social-icons a {
+            color: var(--footer-text);
+            font-size: 1.5rem;
+            transition: var(--transition);
+        }
+
+        .social-icons a:hover {
+            color: var(--secondary-color);
+            transform: translateY(-3px);
+        }
+
+    /* Estilos para escritorio (por encima de 768px) */
+@media (min-width: 769px) {
+ 
+    .main-nav {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0 2rem;
+    }
+
+    .logo-container {
+        position: relative;
+        width: auto;
+        height: 100px;
+        margin-right: 3rem;
+    }
+
+    .logo {
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 100%;
+        width: auto;
+        z-index: 1;
+    }
+
+    .logo img {
+        height: 100%;
+        width: auto;
+    }
+
+    .logo-video-container {
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 100%;
+        width: auto;
+        z-index: 2;
+    }
+
+    .logo-video-container video {
+        height: 100%;
+        width: auto;
+    }
+
+    /* Estados de visibilidad */
+    .logo.hidden {
+        visibility: hidden;
+    }
+
+    .logo-video-container {
+        display: none;
+    }
+
+    .logo-video-container.active {
+        display: block;
+    }
+
+    /* Estilos del menú */
+    .nav-menu {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        margin-right: 150px;
+        margin-left: 180px; /* Añadimos margen izquierdo para mover el menú a la derecha */
+    }
+    
+    /* Añadimos el efecto de resplandor líquido */
+    .nav-menu a::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(
+            120deg,
+            transparent 0%,
+            rgba(255, 255, 255, 0.1) 25%,
+            rgba(255, 255, 255, 0.4) 50%,
+            rgba(255, 255, 255, 0.1) 75%,
+            transparent 100%
+        );
+        transform: translateX(-100%);
+        transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+        z-index: -1;
+        margin-right: 50px;
+        margin-left: 100px; /* Añadimos margen izquierdo para mover el menú a la derecha */
+    }
+
+    /* Efecto de subrayado */
+    .nav-menu a::after {
+        content: '';
+        position: absolute;
+        width: 0;
+        height: 2px; /* Grosor de la línea */
+        background: linear-gradient(
+            90deg,
+            transparent,
+            #ffffff,
+            #a8fff9,
+            #ffffff,
+            transparent
+        );
+        left: 50%;
+        bottom: -10px; /* Distancia del texto */
+        transform: translateX(-50%);
+        transition: width 0.3s ease; /* Transición suave para el subrayado */
+        filter: drop-shadow(0 0 5px rgba(255, 255, 255, 0.8)); /* Sombra para la línea */
+    }
+
+    /* Efectos al hover manteniendo los existentes y añadiendo los nuevos */
+    .nav-menu a:hover {
+        background-position: 0 0;
+        text-shadow: 
+            0 0 8px rgba(255, 255, 255, 0.3),
+            0 0 15px rgba(255, 255, 255, 0.2);
+    }
+
+    .nav-menu a:hover::before {
+        transform: translateX(100%);
+    }
+
+    .nav-menu a:hover::after {
+        width: 80%;
+        opacity: 1;
+        box-shadow: 
+            0 2px 4px rgba(255, 255, 255, 0.8),
+            0 4px 8px rgba(255, 255, 255, 0.5);
+    }
+
+    .nav-menu a {
+        font-size: 1.2rem !important;
+        font-weight: 500;
+        padding: 0 1.5rem;
+        white-space: nowrap;
+        text-align: center;
+        position: relative; /* Para el subrayado */
+        transition: all 0.3s ease; /* Transición suave para la sombra */
+       background: linear-gradient(
+            90deg,
+            transparent 0%,
+            #E2E9EA 50%,
+            transparent 100%
+        );
+        background-size: 200% 100%;
+        background-position: 100% 0;
+        animation: shimmer 3s infinite linear;
+    }
+
+    /* Estilos de iconos sociales */
+    .nav-social-icons {
+        display: flex;
+        align-items: center;
+        gap: 1.5rem !important;
+        height: 100%;
+        margin-left: 2rem;
+        position: absolute;
+        min-width: fit-content;
+        margin-right: 20px !important; /* Añadimos margen izquierdo para mover el menú a la derecha */
+        transition: transform 0.3s ease;
+    }
+
+    .nav-social-icons a i {
+        font-size: 32px !important;
+        display: flex;
+        align-items: center;
+        height: 100%;
+        transition: transform 0.3s ease;
+    }
+
+    .main-nav .nav-links .nav-social-icons a i {
+        font-size: 32px !important;
+    }
+
+    .nav-social-icons a:hover i {
+        transform: scale(1.1);
+        filter: drop-shadow(0 3px 5px rgba(255, 255, 255, 0.5));
+    }
+
+    .nav-social-icons a::after {
+        content: '';
+        position: absolute;
+        width: 0;
+        height: 2.5px;
+        background: var(--secondary-color);
+        left: 50%;
+        bottom: -15px;
+        transform: translateX(-50%);
+        transition: width 0.3s ease;
+        box-shadow: 0 0 8px var(--secondary-color);
+    }
+    
+    .nav-social-icons a:hover::after {
+        width: 100%;
+    }
+
+    .main-nav .nav-links {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+        margin-left: 2rem;
+    }
+}
+
+        /* Media Queries */
+        @media (max-width: 768px) {
+        .hamburger {
+            display: block;
+        }
+
+        .nav-menu {
+            position: fixed;
+            top: -100vh;
+            right: 0; /* Cambiado de left a right para alinearlo con el botón hamburguesa */
+            width: 100%;
+            background-color: rgba(255, 255, 255, 0.6);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            flex-direction: column;
+            text-align: center;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            padding: 1rem 0;
+            display: flex;
+            align-items: center; /* Cambiado a center para mejor alineación */
+            justify-content: center; /* Cambiado a center para mejor alineación */
+            gap: 1rem;
+            transform: translateY(-100%);
+            z-index: 998;
+            margin-top: 100px;
+            opacity: 1; /* Cambiado de 2 a 1 ya que opacity no puede ser mayor que 1 */
+        }
+
+        .nav-menu.active {
+            top: 0;
+            transform: translateY(0); /* Animación de deslizamiento */
+            opacity: 1; /* Se hace visible */
+        }
+
+        .nav-menu a {
+            display: block;
+            padding: 1rem 0;
+            margin: 0.5rem 0;
+            width: 100%;
+            transform: translateY(-20px); /* Preparación para la animación de los enlaces */
+            opacity: 0;
+            transition: all 0.3s ease;
+            font-size: 1.02rem !important; /* Aumenta el tamaño de la letra */
+            font-weight: 500 !important; /* Opcional: hace la letra un poco más gruesa para mejor legibilidad */
+        }
+
+        .nav-menu.active a {
+            transform: translateY(0);
+            opacity: 1;
+            transition-delay: calc(0.1s * var(--i)); /* Efecto cascada para los enlaces */
+        }
+
+            .nav-links {
+            justify-content: space-between;
+            padding: 1rem 2rem;
+            flex-direction: row;
+        }
+        
+        .nav-social-icons {
+            display: flex; /* Asegurar que los íconos de redes sociales sean visibles en móviles */
+            justify-content: center;
+            margin-top: 1rem;
+        }
+            
+        .logo {
+            margin: 0;
+        }
+    }
+
+        /* Animación del botón hamburguesa */
+        .hamburger.active .hamburger-line:nth-child(2) {
+            opacity: 0;
+        }
+
+        .hamburger.active .hamburger-line:nth-child(1) {
+            transform: translateY(8px) rotate(45deg);
+        }
+
+        .hamburger.active .hamburger-line:nth-child(3) {
+                transform: translateY(-8px) rotate(-45deg);
+        }
+
+        .hero-content h1 {
+                font-size: 2.8rem;
+        }
+
+        .hero-content p {
+            font-size: 1.2rem;
+        }
